@@ -26,7 +26,18 @@ def db():
     try:
         return get_firestore_client()
     except Exception as exc:
-        # Credentials, filesystem paths and tokens must never appear in API errors.
+        # Log only error type and configuration presence. Never log keys, paths, or exception text.
+        import logging
+        from pathlib import Path
+        credential_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+        logging.getLogger("uvicorn.error").error(
+            "FIRESTORE_DIAG error_type=%s cause_type=%s json_env_set=%s path_env_set=%s credential_file_exists=%s",
+            type(exc).__name__,
+            type(exc.__cause__).__name__ if exc.__cause__ else "none",
+            bool(os.getenv("FIREBASE_SERVICE_ACCOUNT_JSON", "").strip()),
+            bool(credential_path),
+            bool(credential_path and Path(credential_path).is_file()),
+        )
         raise HTTPException(status_code=503, detail="Firestore 연결 불가: 서버 환경을 점검하세요.") from exc
 
 
