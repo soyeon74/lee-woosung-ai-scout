@@ -216,6 +216,17 @@ python scripts/analyze_kbo.py
 - 공개 통계 조회는 인증이 필요 없지만, 데이터 CRUD·GPT 채팅·대화 조회는 관리자 인증이 필요합니다.
 - Firebase 데이터를 외부로 게시하거나 무단 변경하지 마세요. 채팅에 개인정보·내부자료를 입력하지 마세요.
 
+## 배포 화면 바로가기
+
+| 구분 | 바로가기 | 확인할 사항 |
+| --- | --- | --- |
+| **Vercel 배포 관리 화면** | [Vercel Deployments](https://vercel.com/soyeon-projects1/lee-woosung-ai-scout/deployments) | 최신 배포가 `Ready`, `Production`인지 확인 |
+| **배포된 웹사이트** | [서비스 실행](https://lee-woosung-ai-scout-iota.vercel.app) | 통계·채팅·대화 기록·데이터 관리 |
+| **Render 백엔드 관리 화면** | [Render 서비스 대시보드](https://dashboard.render.com/web/srv-dbn8j415efls73ak0300) | 서비스의 `Live` 상태 확인 |
+| **Swagger API 문서** | [FastAPI /docs](https://lee-woosung-ai-scout.onrender.com/docs) | API 엔드포인트 목록 확인 |
+
+> Vercel과 Render **관리 화면 링크는 해당 계정의 로그인이 필요**합니다. 평가자가 별도 로그인 없이 볼 수 있는 것은 공개 서비스 URL 및 Swagger 문서입니다. 이 표는 화면으로 이동하는 링크이며, 배포 성공 화면 캡처 자체가 아닙니다.
+
 ## 제출 증빙 화면 확인 (2026-11-07)
 
 사용자가 실제 배포된 Vercel 웹사이트에서 촬영한 두 장의 화면을 검토했습니다.
