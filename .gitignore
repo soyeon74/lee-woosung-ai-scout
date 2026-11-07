@@ -1,0 +1,30 @@
+
+# Python virtual environment
+.venv/
+
+# Firebase credentials
+secrets/
+*service-account*.json
+
+# Environment variables
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code local settings
+.vscode/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+secrets/
+firebase-private/
+*service-account*.json
+*serviceAccount*.json
+*.bak
