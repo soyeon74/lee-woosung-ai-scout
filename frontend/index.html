@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>이우성 AI 스카우팅 비서</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header><div class="wrap head"><div><span class="eyebrow">KBO DATA ASSISTANT</span><h1>이우성 AI 스카우팅 비서</h1><p>저장된 경기 기록을 바탕으로 통계와 AI 분석을 확인합니다.</p></div><div class="connection"><span id="status-dot" class="dot"></span><span id="status">연결 대기</span></div></div></header>
+  <main class="wrap">
+    <section class="access panel"><div><h2>API 연결 및 관리자 인증</h2><p>테스트용 관리자 키는 입력한 브라우저 탭의 메모리에서만 사용하며 저장하지 않습니다. 공용 PC에서는 입력하지 마세요.</p></div><div class="access-controls"><label for="key">관리자 키 (x-admin-key)</label><input id="key" type="password" autocomplete="off" placeholder="테스트용 키 입력"/><button id="connect" type="button">연결 확인</button><button class="secondary" id="clear-key" type="button">키 지우기</button></div><p class="notice" id="global-error" role="alert" hidden></p></section>
+    <section class="stats"><div class="stat panel"><span>경기 수</span><strong id="stat-count">—</strong></div><div class="stat panel"><span>총 안타</span><strong id="stat-total">—</strong></div><div class="stat panel"><span>경기당 평균 안타</span><strong id="stat-avg">—</strong></div><div class="stat panel"><span>최근 추세</span><strong id="stat-trend">—</strong></div></section>
+    <p class="period" id="period">기간: —</p>
+    <div class="columns">
+      <section class="panel conversation"><div class="section-head"><div><h2>AI 분석 채팅</h2><p>AI는 저장된 데이터 요약만을 근거로 답변합니다.</p></div><button class="secondary" type="button" id="new-chat">새 대화</button></div><div id="messages" class="messages" aria-live="polite"><p class="muted">질문을 입력해 분석을 시작하세요.</p></div><form id="chat-form" class="chat-input"><label for="message" class="sr-only">질문</label><textarea id="message" maxlength="2000" rows="2" placeholder="예: 최근 10경기 평균 안타 수가 증가했어?" required></textarea><button id="send" type="submit">전송</button></form><p id="chat-progress" class="muted" role="status" hidden>AI 답변을 생성하고 있습니다…</p></section>
+      <section class="panel history"><div class="section-head"><div><h2>대화 기록</h2><p>저장된 대화를 선택하면 질문과 답변을 다시 볼 수 있습니다.</p></div><button class="secondary" id="reload-history" type="button">새로고침</button></div><ul id="history-list" class="history-list"><li class="muted">관리자 키를 입력한 뒤 조회할 수 있습니다.</li></ul></section>
+    </div>
+    <section class="panel data-panel"><div class="section-head"><div><h2>경기 데이터 관리</h2><p>새 항목을 추가하거나 저장된 항목을 수정·삭제할 수 있습니다. 기존 기록은 신중하게 수정하세요.</p></div><button type="button" class="secondary" id="reload-data">새로고침</button></div><form id="data-form" class="data-form"><input id="record-id" type="hidden"/><label>날짜<input id="date" type="date" required/></label><label>안타 수 (value)<input id="value" type="number" min="0" max="1000000" step="1" required/></label><label>메모<input id="memo" type="text" maxlength="300" placeholder="경기 메모"/></label><button id="save-record" type="submit">데이터 추가</button><button id="cancel-edit" type="button" class="secondary" hidden>수정 취소</button></form><p id="data-feedback" class="muted" role="status"></p><div class="table-scroll"><table><thead><tr><th>날짜</th><th>안타</th><th>메모</th><th>작업</th></tr></thead><tbody id="rows"><tr><td colspan="4">데이터 조회 전</td></tr></tbody></table></div></section>
+  </main><footer class="wrap">학습용 서비스 · 실제 데이터와 AI 답변의 근거를 비교 확인하세요. <span id="api-label"></span></footer>
+</body></html>
