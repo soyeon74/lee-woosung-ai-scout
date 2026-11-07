@@ -32,11 +32,14 @@
 | 경기 기록 | **105건** |
 | 총 안타 | **75안타** |
 | 경기당 평균 안타 | 약 **0.714** |
+| 실제 시즌 타율 (75안타 / 300타수) | **0.250** |
 | 기간 | **2025-03-22 ~ 2025-10-04** |
 | 최근 10경기 경기당 평균 안타 | **0.7** |
 | 이전 10경기 경기당 평균 안타 | **0.6** |
 | 최근 추세 | **증가** |
 
+- 원자료 출처: [KBO 공식 타자 일별 기록 — 이우성(2025)](https://www.koreabaseball.com/Record/Player/HitterDetail/Daily.aspx?playerId=63260). 프로젝트 내부 `data/raw/lee_woosung_2025_daily.csv`를 정제하여 105개 기록을 구성했습니다.
+- 원본 검산: 337타석, 300타수, 75안타, 시즌 타율 0.250. 로컬 분석 스크립트를 실행하여 `ANALYSIS_OK`를 확인했습니다. 0타수 경기 2개는 삭제하지 않았습니다.
 - `value`는 경기별 **안타 수(H)** 입니다. **경기당 평균 안타를 타율로 해석하면 안 됩니다.**
 - 추가 → 수정 → 삭제의 실제 CRUD 테스트 이후 기존 105건과 75안타로 복원되었음을 사용자가 확인했습니다.
 - 채팅 응답과 Firestore 대화 저장·조회, Vercel 배포(`Ready`), 새로고침 후 관리자 키 자동 복원을 사용자 화면에서 확인했습니다.
@@ -100,6 +103,7 @@ frontend/
   build.mjs                # Vercel 정적 빌드
   package.json             # npm build 명령
 requirements.txt
+.env.example
 .gitignore
 README.md
 SUBMISSION_GUIDE.md
@@ -116,6 +120,7 @@ pip install -r requirements.txt
 uvicorn backend.main:app --reload
 ```
 
+- 백엔드 로컬 실행 전에 `.env.example`을 `.env`로 복사하고 본인의 실제 설정을 입력해야 합니다. `OPENAI_API_KEY`, `DATA_ADMIN_KEY`, `GOOGLE_APPLICATION_CREDENTIALS`가 필수이며 `ALLOWED_ORIGINS`를 필요한 주소로 제한합니다. `.env.example`은 예시일 뿐 실제 비밀키를 포함하지 않습니다.
 - 백엔드 로컬 실행에는 **본인 소유의 Firebase 인증 설정**과 환경변수가 별도로 필요합니다. 인증 파일을 저장소에 커밋하지 마세요.
 - 웹 화면만 로컬 실행할 때:
 
@@ -192,6 +197,16 @@ py -3.12 -m http.server 5500 --directory frontend
 - 확인 방법: Render에서 Firestore 105건 조회/요약, Swagger를 통한 채팅·대화 확인, 웹에서 CRUD 추가→수정→삭제, Vercel Production Ready, 새로고침 후 키 복원 확인.
 - 해결한 문제: 사내 PC에서 gRPC DLL 실행 제한 → Render에서 백엔드 실행; Firebase 인증 파일을 Render Secret File로 구성; Vercel의 잘못된 FastAPI 프리셋을 Other/정적 빌드로 변경; CORS 출처 등록.
 - 한계: 문서는 과제 개발 과정을 요약한 것으로 실제 프롬프트 로그 전체나 스크린샷을 포함하지 않습니다.
+
+## 데이터 재검산
+
+원본 CSV를 이용해 통계 검증 과정을 다시 실행할 수 있습니다.
+
+```powershell
+python scripts/analyze_kbo.py
+```
+
+2026-11-07 분리된 검사 환경에서 보관된 프로젝트 사본의 원자료를 재분석한 결과: **105건, 337타석, 300타수, 75안타, 타율 0.250, 0타수 기록 2건 보존, `ANALYSIS_OK`**. 이 검사는 분석 스크립트와 데이터의 정합성 검사이며 Render/Firestore 실시간 통신 검사는 아닙니다.
 
 ## 보안 및 사용 범위
 
