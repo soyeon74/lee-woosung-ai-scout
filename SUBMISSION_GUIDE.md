@@ -64,7 +64,7 @@ Firestore 데이터 복원 확인 시점(2026-11-07)의 기록:
 | `07_render_live.png` | Render 배포 상태 | 비밀 환경변수 화면 노출 금지 |
 | `08_vercel_ready.png` | Vercel Deployments 최신 항목 `Ready` | 배포 버전·Production 확인 |
 
-**최소 추천 증빙 5장:** `01`, `02`, `03`, `06`, `08`. 평가자가 CRUD 증빙을 요구한다면 `05` 추가.
+**과제 필수 증빙:** `01`(통계), `02`(AI 질문·답변), `03`(대화 불러오기), `05`(CRUD 한 가지 실제 동작). 배포와 API 구조 증빙으로 `06`(Swagger)과 `08`(Vercel Ready)도 권장합니다. `05`는 선택 항목이 아니라 이번 과제의 제출 근거입니다.
 
 ## 5. 제출 전 최종 시연 순서 (약식)
 
@@ -109,6 +109,7 @@ A. 백엔드는 Render, 프론트엔드는 Vercel입니다. Vercel은 정적 파
     01_vercel_main.png
     02_chat_answer.png
     03_conversation_history.png
+    05_crud_test.png
     06_swagger.png
     08_vercel_ready.png
   README_참조.txt           # GitHub README 링크
