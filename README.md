@@ -244,15 +244,14 @@ python scripts/analyze_kbo.py
 
 **중요:** Render에서 `Live`가 보이더라도 Firestore 연결까지 항상 정상임을 증명하지는 않습니다. 503 화면의 정확한 원인은 로그를 확인하기 전까지 확정할 수 없습니다. 서버 콜드 스타트에서 두 조회 요청이 동시에 Firebase를 초기화하면서 충돌할 가능성이 있어 초기화 잠금 기능을 코드에 추가했으며, 수정 후 실제 동작은 재확인해야 합니다.
 
-제출 시 스크린샷 원본을 `docs/evidence/`에 올리고 아래 형식으로 README에 삽입할 수 있습니다.
+### API 화면 확인용 정확한 링크
 
-```markdown
-![최신 Vercel 배포 성공 화면](docs/evidence/06_vercel_ready.png)
-![Render 서버 Live 화면](docs/evidence/07_render_live.png)
-![Swagger API 목록 화면](docs/evidence/05_swagger_api.png)
-```
+- **Swagger 화면:** [이우성 AI 스카우팅 비서 FastAPI 문서 열기](https://lee-woosung-ai-scout.onrender.com/docs)
+- **실제 API 통계 응답:** [Firestore 시계열 요약 조회](https://lee-woosung-ai-scout.onrender.com/api/data/summary)
+- **백엔드 배포 관리:** [Render Live 상태 확인](https://dashboard.render.com/web/srv-dbn8j415efls73ak0300)
+- **프론트엔드 배포 관리:** [Vercel Ready 상태 확인](https://vercel.com/soyeon-projects1/lee-woosung-ai-scout/deployments)
 
-위 마크다운은 **업로드 후 사용하기 위한 예시**이며, 아직 존재하지 않는 이미지 파일 링크를 실제 README에 삽입한 것은 아닙니다. 관리자 키·서비스 인증정보는 반드시 가리고 공개해야 합니다.
+**정정:** 이 README에는 Swagger 캡처 이미지가 실제로 업로드되어 있지 않습니다. 앞서 기재했던 `docs/evidence/05_swagger_api.png` 등 경로는 존재가 확인되지 않은 예시였으므로 삭제했습니다. 해당 링크를 캡처 이미지처럼 취급하면 안 됩니다. 이번 화면 증빙은 실제 운영 화면으로 이어지는 위 링크를 사용하세요. GitHub에 캡처 이미지를 삽입할 때는 저장소에 이미지 파일을 업로드하고 경로를 검증한 뒤 연결해야 합니다.
 
 ## 검증 및 증빙
 
